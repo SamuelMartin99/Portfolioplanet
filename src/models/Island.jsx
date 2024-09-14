@@ -21,7 +21,6 @@ const Island = ({
   const lastX = useRef(0);
   const rotationSpeed = useRef(0);
   const dampingFactor = 0.95;
-
   const handlePointerDown = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -71,7 +70,7 @@ const Island = ({
   };
 
   
-/*   // Touch events for mobile devices
+   // Touch events for mobile devices
   const handleTouchStart = (e) => {
     e.stopPropagation();
     e.preventDefault();
@@ -99,7 +98,7 @@ const Island = ({
       lastX.current = clientX;
       rotationSpeed.current = delta * 0.01 * Math.PI;
     }
-  } */
+  } 
 
   
 
@@ -108,6 +107,9 @@ const Island = ({
     canvas.addEventListener("pointerdown", handlePointerDown);
     canvas.addEventListener("pointerup", handlePointerUp);
     canvas.addEventListener("pointermove", handlePointerMove);
+    canvas.addEventListener("touchstart", handleTouchStart);
+    canvas.addEventListener("touchend", handleTouchEnd);
+    canvas.addEventListener("touchmove", handleTouchMove);
   
 
   
@@ -118,13 +120,16 @@ const Island = ({
       canvas.removeEventListener("pointerdown", handlePointerDown);
       canvas.removeEventListener("pointerup", handlePointerUp);
       canvas.removeEventListener("pointermove", handlePointerMove);
+      canvas.removeEventListener("touchstart", handleTouchStart);
+      canvas.removeEventListener("touchend", handleTouchEnd);
+      canvas.removeEventListener("touchmove", handleTouchMove);
   
 
   
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
     };
-  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove, handleKeyDown, handleKeyUp]); // Agrega todas las dependencias necesarias
+  }, [gl, handlePointerDown, handlePointerUp, handlePointerMove, handleKeyDown, handleKeyUp, handleTouchEnd,handleTouchMove,handleTouchStart]); // Agrega todas las dependencias necesarias
 
   useFrame(() => {
     if (!isRotating) {
