@@ -150,13 +150,13 @@ const Island = ({
   
         // Condiciones para actualizar el stage con tolerancia
         let newStage = null;
-        if (isCloseTo(normalizedRotation, 5.65, 0.2)) {
+        if (isCloseTo(normalizedRotation, 5.65, 0.3)) {
           newStage = 4;
-        } else if (isCloseTo(normalizedRotation, 1.075, 0.2)) {
+        } else if (isCloseTo(normalizedRotation, 1.075, 0.3)) {
           newStage = 3;
-        } else if (isCloseTo(normalizedRotation, 2.5, 0.2)) {
+        } else if (isCloseTo(normalizedRotation, 2.5, 0.3)) {
           newStage = 2;
-        } else if (isCloseTo(normalizedRotation, 4.5, 0.2)) {
+        } else if (isCloseTo(normalizedRotation, 4.5, 0.3)) {
           newStage = 1;
         }
   

@@ -219,6 +219,7 @@ const Contact = () => {
       </div>
       <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
         <Canvas
+          style={{ touchAction: "none" }}
           camera={{
             position: [5, 5, 5], // Posición de la cámara
             fov: 75, // Campo de visión de la cámara
@@ -227,16 +228,13 @@ const Contact = () => {
           }}
         >
           <directionalLight intensity={2.5} position={[0.2, 1, 1]} />
-          {/* Luz direccional */}
-          <ambientLight intensity={1} /> {/* Luz ambiental */}
+          <ambientLight intensity={1} />
           <Suspense fallback={<Loader />}>
-           
-            {/* Muestra el Loader mientras se carga el modelo */}
             <Keyboard
-              currentAnimation={currentAnimation} // Animación actual del teclado
-              position={[1, 0.1, -2]} // Posición del modelo en el espacio 3D
-              rotation={[7.9, 7.6, 4.4]} // Rotación del modelo en el espacio 3D
-              scale={[40, 40, 40]} // Escala del modelo en el espacio 3D
+              currentAnimation={currentAnimation}
+              position={[1, 0.1, -2]}
+              rotation={[7.9, 7.6, 4.4]}
+              scale={[40, 40, 40]}
             />
           </Suspense>
         </Canvas>

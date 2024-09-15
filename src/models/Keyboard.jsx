@@ -6,32 +6,78 @@ Source: https://sketchfab.com/3d-models/keyboard-ba869e8681974cf088736173b8b86fe
 Title: keyboard
 */
 
-import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
-import scene from '../assets/3d/keyboard.glb'
+import React, { useRef, useEffect, useState } from 'react';
+import { useGLTF, useAnimations } from '@react-three/drei';
+import { useFrame, useThree } from '@react-three/fiber';
+import { useDrag } from '@use-gesture/react';
+import scene from '../assets/3d/keyboard.glb';
 
-const Keyboard = ({currentAnimation, ...props}) => {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF(scene)
-  const { actions } = useAnimations(animations, group)
+const Keyboard = ({ currentAnimation, ...props }) => {
+  const group = useRef();
+  const { gl } = useThree();
+  const { nodes, materials, animations } = useGLTF(scene);
+  const { actions } = useAnimations(animations, group);
 
-  useEffect (()=>{
-    // Imprime todos los nombres de las animaciones disponibles
-   /*  console.log("Animaciones disponibles:", Object.keys(actions)); */
+  const [isRotating, setIsRotating] = useState(false);
+  const rotationSpeedX = useRef(0); // Asegúrate de que esté correctamente definido
+  const rotationSpeedY = useRef(0); // Asegúrate de que esté correctamente definido
+  const dampingFactor = 0.95;
 
-    Object.values(actions).forEach((action)=> action.stop());
-    if(actions[currentAnimation]){
-        actions[currentAnimation].play();
-    } /* else {
-        console.warn(`Animación ${currentAnimation} no encontrada`);
-      } */
+  // Manejo de animaciones
+  useEffect(() => {
+    Object.values(actions).forEach((action) => action.stop());
+    if (actions[currentAnimation]) {
+      actions[currentAnimation].play();
+    }
   }, [actions, currentAnimation]);
+
+  // Hook useDrag para manejar la rotación
+  useDrag(
+    ({ movement: [deltaX, deltaY], memo = [group.current.rotation.x, group.current.rotation.y] }) => {
+      const sensitivity = 0.0002; // Ajusta este valor para cambiar la sensibilidad de rotación
+      const [initialRotationX, initialRotationY] = memo;
+
+      // Calcula las nuevas rotaciones basadas en el arrastre
+      const newRotationX = initialRotationX + deltaY * sensitivity;
+      const newRotationY = initialRotationY + deltaX * sensitivity;
+
+      group.current.rotation.x = newRotationX; // Aplica la rotación en el eje X
+      group.current.rotation.y = newRotationY; // Aplica la rotación en el eje Y
+
+      rotationSpeedX.current = deltaY * sensitivity; // Actualiza la velocidad de rotación para el suavizado
+      rotationSpeedY.current = deltaX * sensitivity; // Actualiza la velocidad de rotación para el suavizado
+
+      setIsRotating(true); // Establece el estado de rotación en true
+      return [newRotationX, newRotationY]; // Devuelve los valores memo actualizados
+    },
+    {
+      target: gl.domElement,
+      from: () => [group.current.rotation.x, group.current.rotation.y],
+      onDragEnd: () => setIsRotating(false), // Detiene la rotación cuando termina el arrastre
+    }
+  );
+
+  // Hook para la rotación suavizada
+  useFrame(() => {
+    if (!isRotating) {
+      rotationSpeedX.current *= dampingFactor;
+      rotationSpeedY.current *= dampingFactor;
+
+      if (Math.abs(rotationSpeedX.current) > 0.002 || Math.abs(rotationSpeedY.current) > 0.002) {
+        group.current.rotation.x += rotationSpeedX.current;
+        group.current.rotation.y += rotationSpeedY.current;
+      }
+    }
+  });
+
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
           <group name="root">
             <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+            
               <group
                 name="Cube020_0"
                 position={[-0.063, -0.008, 0.029]}
