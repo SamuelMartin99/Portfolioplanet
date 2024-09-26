@@ -173,19 +173,19 @@ export const socialLinks = [
 export const projects = [
     
     {
+        iconUrl: react,
+        theme: 'btn-back-pink',
+        name: 'Portfolio 3D',
+        description: 'Portfolio interactivo, con animaciones 3D. utilizando Three.js',
+        link: 'https://github.com/SamuelMartin99/Page3d', //luego agregar mas proyectos
+    },
+    {
         iconUrl: shopify,
         theme: 'btn-back-red',
         name: 'Tienda digital shopify',
-        description: 'Desarrollé una pagina con shopify de e-commerce como practica para futuros proyectos, utilizando herramientas de la plataforma y agregando estilos css para mejorar el sitio',
+        description: 'Desarrollé una pagina con shopify para vender productos, utilizando herramientas de la plataforma y agregando estilos css para mejorar el sitio',
         link: 'https://frondaco.shop/',
     },
-    {
-        iconUrl: css,
-        theme: 'btn-back-pink',
-        name: 'Diseño web Responsivo',
-        description: 'Cree un Clon de Netflix en una de mis practicas, implementando un carrousel y efectos css. Uno de mis primeros proyectos',
-        link: 'https://github.com/SamuelMartin99/clondenetflix2022', //luego agregar mas proyectos
-    },
-    
+   
 
 ];

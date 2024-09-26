@@ -17,11 +17,8 @@ const Projects = () => {
       <div className="mt-5 flex flex-col gap-3 text-gray-400">
         <p>
           Bienvenido a mi portafolio de proyectos. Aquí encontrarás una selección
-          de los trabajos en los que he estado involucrado, desde aplicaciones web
-          y diseños de interfaz hasta soluciones de comercio electrónico. Cada
-          proyecto refleja mi enfoque en crear experiencias digitales efectivas y
-          modernas, utilizando tecnologías como React, Shopify, y más. Explora los
-          detalles de cada proyecto para ver cómo puedo ayudarte a llevar tus ideas
+          de algunos trabajos, desde aplicaciones web
+          a diseños de interfaz. Utilizando tecnologías como React, Shopify, y más. Explora cada proyecto para ver cómo puedo ayudarte a llevar tus ideas
           al siguiente nivel.
         </p>
       </div>

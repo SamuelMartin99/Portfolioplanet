@@ -16,7 +16,7 @@ const About = () => {
 
       <div className="mt-5 text-gray-300 space-y-4">
         <p>
-          Soy desarrollador motivado por el desarrollo y programacion, me
+          Motivado por el desarrollo y programacion, me
           encuentro realizando distintos proyectos personales y comerciales. En
           mis trabajos me gusta aplicar las mejores practicas, creando
           interfaces interactivas y creativas!
