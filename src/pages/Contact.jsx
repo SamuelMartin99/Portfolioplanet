@@ -135,8 +135,8 @@ const Contact = () => {
         {
           form_name: form.name, // Nombre del remitente
           to_name: "samuel", // Nombre del destinatario
-          from_email: form.email, // Email del remitente
-          to_email: "samudev99@gmail.com", // Email del destinatario
+          from_email: form.email, // remitente
+          to_email: "neptunodev@gmail.com", //destinatario
           message: form.message, // Mensaje
         },
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY // Llave pública de emailjs
@@ -152,89 +152,88 @@ const Contact = () => {
   const handleBlur = () => setCurrentAnimation("Animation");
 
   return (
-    <section className="relative flex lg:flex-row flex-col max-container">
-      {alert.show && <Alert {...alert} />} {/* Mostrar alerta si está activa */}
-      <div className="flex-1 min-w-[50%] flex flex-col">
-        <h1 className="head-text">Envia un mensaje y estaremos en contacto!</h1>
-        {/* Título del formulario */}
+    <section className="mx-auto flex lg:flex-row flex-col max-w-7xl bg-gray-800 text-white p-8 lg:p-16 mt-30">  {/* Añadimos mt-20 */}
+      {alert.show && <Alert {...alert} />}
+      <div className="flex-1 min-w-[100%] lg:min-w-[50%]">
+        <h1 className="hero-text text-white font-bold text-3xl lg:text-5xl mt-20">
+          Contacto
+        </h1>
         <form
           className="w-full flex flex-col gap-7 mt-14"
-          onSubmit={handleSubmit} // Manejar el envío del formulario
+          onSubmit={handleSubmit}
         >
-          <label className="text-black-500 font-semibold">
+          <label className="text-gray-300 font-semibold">
             Nombre
             <input
               type="text"
               name="name"
-              className="input"
+              className="input bg-gray-900 text-white border border-gray-700 hover:border-cyan-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg p-3 transition-all duration-300 ease-in-out"
               placeholder="Ingrese su nombre"
               required
               value={form.name}
-              onChange={handleChange} // Actualizar el estado del formulario cuando el usuario escribe
-              onFocus={handleFocus} // Cambiar la animación cuando el campo recibe foco
-              onBlur={handleBlur} // Cambiar la animación cuando el campo pierde foco
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           </label>
 
-          <label className="text-black-500 font-semibold">
+          <label className="text-gray-300 font-semibold">
             Email
             <input
               type="email"
               name="email"
-              className="input"
+              className="input bg-gray-900 text-white border border-gray-700 hover:border-cyan-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg p-3 transition-all duration-300 ease-in-out"
               placeholder="Ingrese su email"
               required
               value={form.email}
-              onChange={handleChange} // Actualizar el estado del formulario cuando el usuario escribe
-              onFocus={handleFocus} // Cambiar la animación cuando el campo recibe foco
-              onBlur={handleBlur} // Cambiar la animación cuando el campo pierde foco
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           </label>
 
-          <label className="text-black-500 font-semibold">
+          <label className="text-gray-300 font-semibold">
             Tu mensaje
             <textarea
               name="message"
               rows="4"
-              className="textarea"
+              className="textarea bg-gray-900 text-white border border-gray-700 hover:border-cyan-300 focus:border-cyan-500 focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-lg p-3 transition-all duration-300 ease-in-out"
               placeholder="Deja un mensaje"
               required
               value={form.message}
-              onChange={handleChange} // Actualizar el estado del formulario cuando el usuario escribe
-              onFocus={handleFocus} // Cambiar la animación cuando el campo recibe foco
-              onBlur={handleBlur} // Cambiar la animación cuando el campo pierde foco
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
             />
           </label>
+
           <button
             type="submit"
-            disabled={isLoading} // Deshabilitar el botón cuando se está enviando
-            className="btn"
-            onFocus={handleFocus} // Cambiar la animación cuando el botón recibe foco
-            onBlur={handleBlur} // Cambiar la animación cuando el botón pierde foco
+            disabled={isLoading}
+            className="btn bg-cyan-500 text-white font-semibold rounded-lg py-3 px-6 hover:bg-cyan-600 transition-all duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-cyan-500"
           >
             {isLoading ? "Enviando..." : "Enviar"}
-            {/* Cambiar el texto del botón según el estado de carga */}
           </button>
         </form>
       </div>
-      <div className="lg:w-1/2 w-full lg:h-auto md:h-[550px] h-[350px]">
+      <div className="lg:w-1/2 w-full lg:h-[500px] h-[400px]">
         <Canvas
-          style={{ touchAction: "none" }}
+          style={{ touchAction: "none", width: "100%", height: "100%" }}
           camera={{
-            position: [5, 5, 5], // Posición de la cámara
-            fov: 75, // Campo de visión de la cámara
-            near: 0.1, // Distancia cercana del frustum de la cámara
-            far: 90, // Distancia lejana del frustum de la cámara
+            position: [3, 3, 3],
+            fov: 50,
+            near: 0.1,
+            far: 80,
           }}
         >
-          <directionalLight intensity={2.5} position={[0.2, 1, 1]} />
-          <ambientLight intensity={1} />
+          <directionalLight intensity={2} position={[0, 1, 1]} />
+          <ambientLight intensity={0.8} />
           <Suspense fallback={<Loader />}>
             <Keyboard
               currentAnimation={currentAnimation}
-              position={[1, 0.1, -2]}
-              rotation={[7.9, 7.6, 4.4]}
-              scale={[40, 40, 40]}
+              position={[0, 0, 0]}
+              rotation={[0, 0, 0]}
+              scale={[25, 25, 25]}
             />
           </Suspense>
         </Canvas>

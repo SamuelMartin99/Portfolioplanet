@@ -13,6 +13,7 @@ import {
     nextjs,
     nodejs,
     pricewise,
+    mui,
     react,
     redux,
     sass,
@@ -66,11 +67,11 @@ export const skills = [
         name: "Motion",
         type: "Animation",
     }, */
-    /* {
+     {
         imageUrl: mui,
         name: "Material-UI",
         type: "Frontend",
-    }, */
+    },
     /* {
         imageUrl: nextjs,
         name: "Next.js",
@@ -96,11 +97,11 @@ export const skills = [
         name: "Redux",
         type: "State Management",
     }, */
-    /* {
+     {
         imageUrl: sass,
         name: "Sass",
         type: "Frontend",
-    }, */
+    },
     {
         imageUrl: tailwindcss,
         name: "Tailwind CSS",

@@ -1,0 +1,129 @@
+/* Estilos Generales */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .hero-text {
+    font-size: 3rem;
+    animation: textAppear 1s ease-out;
+  }
+  
+  .hero-subtext {
+    font-size: 1.5rem;
+    animation: textAppear 2s ease-out;
+  }
+  
+  @keyframes textAppear {
+    0% {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Projects Section */
+  .projects-section {
+    padding: 5rem 0;
+    background-color: white;
+    text-align: center;
+  }
+  
+  .projects-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .project-card {
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .project-card .card-front,
+  .project-card .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    transition: transform 0.8s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  
+  .project-card .card-front {
+    background-color: #8e44ad;
+    color: white;
+  }
+  
+  .project-card .card-back {
+    background-color: #3498db;
+    color: white;
+    transform: rotateY(180deg);
+  }
+  
+  .project-card:hover .card-front {
+    transform: rotateY(180deg);
+  }
+  
+  .project-card:hover .card-back {
+    transform: rotateY(0);
+  }
+  
+  /* Contact Section */
+  .contact-section {
+    padding: 5rem 0;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  
+  .contact-form input,
+  .contact-form textarea {
+    margin: 1rem 0;
+    padding: 1rem;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s;
+  }
+  
+  .contact-form button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #8e44ad;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .contact-form button:hover {
+    background-color: #3498db;
+  }
+  
