@@ -6,9 +6,12 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import CTA from "../components/CTA";
 
+
 const About = () => {
   return (
-    <section className="max-w-7xl mx-auto p-8 bg-gray-800 text-white mt-30">
+    <section className="max-w-7xl mx-auto p-8 bg-gray-800 text-white mt-30"
+    
+    >
       <h1 className="subhead-text text-4xl font-bold mt-20">
         Bienvenidos!
         <span className="blue-gradient_text font-semibold drop-shadow ml-2"></span>
@@ -79,17 +82,17 @@ const About = () => {
                 }
                 iconStyle={{ background: experience.iconBg }}
                 contentStyle={{
-                  background: "#1F2937", // Fondo oscuro para el contenido de la línea de tiempo
+                  background: "#34D399", // Fondo oscuro para el contenido de la línea de tiempo
                   color: "#FFF", // Texto claro
                   borderBottom: `4px solid ${experience.iconBg}`,
                   boxShadow: "none",
                 }}
               >
                 <div>
-                  <h3 className="text-white text-xl font-semibold">
+                  <h3 className="text-black text-xl font-semibold">
                     {experience.title}
                   </h3>
-                  <p className="text-gray-300 font-medium">
+                  <p className="text-black font-medium">
                     {experience.company_name}
                   </p>
                 </div>
@@ -97,7 +100,7 @@ const About = () => {
                   {experience.points.map((point, index) => (
                     <li
                       key={`experience-point-${index}`}
-                      className="text-gray-300 font-normal text-sm"
+                      className="text-black font-normal text-sm"
                     >
                       {point}
                     </li>

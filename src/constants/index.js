@@ -120,9 +120,9 @@ export const experiences = [
         icon: react,
         company_name: "portfolio",
         iconBg: "#282c34",
-        date: "September 2024",
+        date: "Sep 2024",
         points: [
-            "En este proyecto, apliqué técnicas modernas de desarrollo para diseñar una interfaz de usuario atractiva completamente responsiva, asegurando una experiencia fluida optimizada en todos los dispositivos.","Integré elementos interactivos y animaciones 3D para ofrecer una experiencia única y dinámica, destacando mi capacidad para trabajar con tecnologías avanzadas."
+            "En este proyecto, apliqué técnicas modernas de desarrollo para diseñar una interfaz de usuario atractiva completamente responsiva, asegurando una experiencia fluida optimizada en todos los dispositivos."
         ],
     },
 
@@ -141,7 +141,7 @@ export const experiences = [
         company_name: "freelance",
         icon: javascript,
         iconBg: "#b7e4c7",
-        date: "Jan 2022 - Jan 2023",
+        date: "since 2022",
         points: [
             "Desarrollo de interfaces web",
             "Creacion de formularios",

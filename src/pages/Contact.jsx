@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import Keyboard from "../models/Keyboard"; // Importa el modelo 3D del teclado
 import useAlert from "../hooks/useAlert"; // Importa el hook personalizado para manejar alertas
 import Alert from "../components/Alert"; // Importa el componente de alerta
+import backgroundImage from "../assets/images/background-image.jpg";
 const Contact = () => {
   const formRef = useRef(); // Crea una referencia al formulario
   const [form, setForm] = useState({ name: "", email: "", message: "" }); // Estado para almacenar los datos del formulario
@@ -152,7 +153,14 @@ const Contact = () => {
   const handleBlur = () => setCurrentAnimation("Animation");
 
   return (
-    <section className="mx-auto flex lg:flex-row flex-col max-w-7xl bg-gray-800 text-white p-8 lg:p-16 mt-30">  {/* Añadimos mt-20 */}
+    <section className="mx-auto flex lg:flex-row flex-col max-w-7xl bg-gray-800 text-white p-8 lg:p-16 mt-30"
+    style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+    }}
+    >  {/* Añadimos mt-20 */}
       {alert.show && <Alert {...alert} />}
       <div className="flex-1 min-w-[100%] lg:min-w-[50%]">
         <h1 className="hero-text text-white font-bold text-3xl lg:text-5xl mt-20">

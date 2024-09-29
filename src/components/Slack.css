@@ -1,0 +1,19 @@
+@keyframes slideLogos {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .gradient {
+    mask: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+    webkit-mask: linear-gradient(90deg, transparent, black 20%, black 80%, transparent);
+  }
+  
+  .animate-slide-logos {
+    display: flex;
+    gap: 4rem;
+    animation: slideLogos 15s linear infinite;
+  }
